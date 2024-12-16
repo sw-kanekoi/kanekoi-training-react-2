@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import Post from './components/Post';
 
-function AppRedux1() {
+function App() {
   const count = useSelector((state) => state.count);
   const dispatch = useDispatch();
   const increase = () => {
@@ -25,4 +25,4 @@ function AppRedux1() {
   );
 }
 
-export default AppRedux1;
+export default App;
