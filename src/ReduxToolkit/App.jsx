@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 function App() {
   const lists = useSelector((state) => state.todos.lists);
+  console.log("lists :",lists)
   const [name, setName] = useState("");
   const initialComplete = false;
   const inputText = (e) => {
@@ -28,7 +29,7 @@ function App() {
                 <button onClick={() => dispatch(doneList({name: list.name}))}>
                   完了
                 </button>
-                <button onClick={() => dispatch(deleteList({name: list.name}))}>
+                <button onClick={() => dispatch(deleteList({id: list.id}))}>
                   削除
                 </button>
               </div>

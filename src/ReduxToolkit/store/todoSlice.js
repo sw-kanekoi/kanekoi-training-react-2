@@ -5,14 +5,17 @@ export const todoSlice = createSlice({
     initialState: { //初期状態
         lists: [
             {
+                id: 1,
                 name: 'ブログを確認',
                 complete: true,
             },
             {
+                id: 2,
                 name: 'メールの返信',
                 complete: false,
             },
         ],
+        maxId: 2,
     },
     reducers: {
         doneList: (state, action) => {
@@ -26,15 +29,16 @@ export const todoSlice = createSlice({
             const {name, complete} = action.payload;
             if(!name) return;
             
+            state.maxId = state.maxId + 1;
             state.lists = [
                 ...state.lists,
-                { name, complete: complete || false }
+                { id: state.maxId, name, complete: complete || false }
             ]
         },
         deleteList: (state, action) => {
-            const {name} = action.payload;
-            if(!name) return;
-            state.lists = state.lists.filter((list) => list.name !== name)
+            const {id} = action.payload;
+            if(!id) return;
+            state.lists = state.lists.filter((list) => list.id !== id)
         },
     },
 });
